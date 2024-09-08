@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { LoginDialog } from "./_components/logindialog";
-import { Xtream, XTREAM_CONFIG_KEY } from "@/lib/xtream";
+import { Xtream, XTREAM_CONFIG_KEY, XTREAM_PRELOADED } from "@/lib/xtream";
 import { xtreamClient, xtreamValues } from "./global";
 import { toast } from "sonner";
 import {
@@ -10,18 +10,23 @@ import {
   FetchError,
 } from "@/lib/errors";
 import MainNav from "./_components/mainnav";
+import LoadingSpinner from "./_components/loadingspinner";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isDialogOpen, setDialogOpen] = useState(true);
+  const [isLoadingPlaylist, setIsLoadingPlayist] = useState(false);
 
   useEffect(() => {
     const checkExistingLogin = async () => {
       const conf = localStorage.getItem(XTREAM_CONFIG_KEY);
       if (conf) {
         try {
-          xtreamClient.setConfig();
+          xtreamClient.setConfig(JSON.parse(conf));
           await xtreamClient.getAccountInfo();
+          setIsLoggedIn(true);
+          setDialogOpen(false);
+          setIsLoadingPlayist(true);
           const preloaded = localStorage.getItem(XTREAM_PRELOADED);
           if (preloaded) {
             xtreamValues.loadFromJson(JSON.parse(preloaded));
@@ -32,12 +37,11 @@ export default function Home() {
               JSON.stringify(xtreamValues.dump()),
             );
           }
-
-          setIsLoggedIn(true);
-          setDialogOpen(false);
+          setIsLoadingPlayist(false);
         } catch (error) {
           console.error("Error checking existing login:", error);
           setIsLoggedIn(false);
+          setIsLoadingPlayist(false);
         }
       }
     };
@@ -55,13 +59,21 @@ export default function Home() {
         },
       });
       await xtreamClient.getAccountInfo();
+      setIsLoggedIn(true);
+      setDialogOpen(false);
+      setIsLoadingPlayist(true);
       localStorage.setItem(
         XTREAM_CONFIG_KEY,
         JSON.stringify(xtreamClient.getConfig()),
       );
-      setIsLoggedIn(true);
-      setDialogOpen(false);
+      await xtreamValues.setValuesXtreamClient(xtreamClient);
+      localStorage.setItem(
+        XTREAM_PRELOADED,
+        JSON.stringify(xtreamValues.dump()),
+      );
+      setIsLoadingPlayist(false);
     } catch (error) {
+      setIsLoadingPlayist(false);
       var description = "Could not login";
       if (error instanceof FetchError) {
         description = "could not connect to given url";
@@ -78,6 +90,14 @@ export default function Home() {
       // Handle login error (e.g., show an error message to the user)
     }
   };
+
+  if (isLoadingPlaylist) {
+    return (
+      <LoadingSpinner
+        description={"Loading playlist this can take a while..."}
+      />
+    );
+  }
 
   if (isLoggedIn) {
     return <MainNav />;
