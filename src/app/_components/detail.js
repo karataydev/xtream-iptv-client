@@ -33,7 +33,7 @@ export function StreamDetail({ selectedStream, category }) {
     return <div></div>;
   }
   return (
-    <ScrollArea className="h-screen bg-gray-50 dark:bg-black p-6">
+    <ScrollArea className="h-[96vh] flex-grow bg-gray-50 dark:bg-black p-6">
       <div className="max-w-xl">
         <h2 className="mb-6 text-lg font-semibold">Movie Details</h2>
         <div className="grid gap-6 md:grid-cols-[300px_1fr]">

@@ -10,7 +10,7 @@ export function StreamSelector({
   handleStreamChange,
 }) {
   return (
-    <div className="flex flex-col h-screen border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+    <div className="h-[96vh] flex flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
       <div className="border-b border-gray-200 dark:border-gray-800 p-4">
         <h1 className="mb-4 text-lg font-semibold">{selectedCategory}</h1>
         <form className="relative">

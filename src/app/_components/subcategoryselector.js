@@ -8,7 +8,7 @@ export function SubCategorySelector({
   selectedSubCategory,
 }) {
   return (
-    <div className="flex flex-col h-screen border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-4">
+    <div className="h-[96vh] flex flex-grow flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-4">
       <h2 className="mb-4 text-lg font-semibold">Categories</h2>
       <ScrollArea className="flex-1">
         <div className="grid gap-2">
