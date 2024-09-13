@@ -31,14 +31,10 @@ export class Xtream {
   execute(action, filter) {
     const query = pickBy({ ...this.config.auth, action, ...filter });
 
-    const encodedUrl = encodeURIComponent(
-      `${this.config.baseUrl}/player_api.php?${querystring.stringify(query)}`,
-    );
-    const proxyUrl = `/api/proxy/${encodedUrl}`;
-
+    const fullUrl = `${this.config.baseUrl}/player_api.php?${querystring.stringify(query)}`;
     return Promise.resolve()
       .then(() =>
-        fetch(proxyUrl).then((response) => {
+        fetch(fullUrl).then((response) => {
           if (!response.ok) {
             throw new FetchError(`HTTP error! status: ${response.status}`);
           }

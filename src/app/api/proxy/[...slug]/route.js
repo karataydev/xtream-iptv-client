@@ -16,7 +16,6 @@ export async function GET(request, { params }) {
       method: "GET",
       headers: {
         Accept: "application/json",
-        'User-Agent': 'Your App Name/Version',
 
       },
       // AbortSignal.timeout() is a newer API, you might need to use a polyfill for older environments
