@@ -1,7 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Film, Tv, Radio } from "lucide-react";
-import { Categories } from "@/lib/xtream";
 import {
   Breadcrumb,
   BreadcrumbItem,

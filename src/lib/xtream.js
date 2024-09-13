@@ -126,6 +126,25 @@ export class Xtream {
   }
 
   /**
+   * GET Series Info
+   *
+   * @param {number} id This will get info such as video codecs, duration, description, directors for 1 VOD
+   */
+  getSeriesInfo(id) {
+    if (!id) {
+      return Promise.reject(new Error("Series Id not defined"));
+    }
+
+    return this.execute("get_series_info", { series_id: id }).then((T) => {
+      if (T.hasOwnProperty("info") && T.info.length === 0) {
+        return Promise.reject(new Error(`Series with id: ${id} not found`));
+      }
+
+      return T;
+    });
+  }
+
+  /**
    * GET short_epg for LIVE Streams (same as stalker portal, prints the next X EPG that will play soon)
    *
    * @param {number} id
