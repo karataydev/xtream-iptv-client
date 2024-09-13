@@ -26,7 +26,7 @@ export function LoginCard({ onLogin }) {
           play in your favorite media player.
         </p>
       </div>
-      <Card className="w-full max-w-[425px]">
+      <Card className="w-full max-w-[425px] bg-background text-foreground">
         <CardHeader>
           <CardTitle>Log In</CardTitle>
           <CardDescription>
