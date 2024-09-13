@@ -3,9 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   // Decode the URL from the path parameter
   const encodedUrl = params.slug.join("/");
-  console.log("encoded url: " + encodedUrl);
   const url = decodeURIComponent(encodedUrl);
-  console.log("decoded url: " + encodedUrl);
   if (!url) {
     return NextResponse.json(
       { error: "URL parameter is required" },
@@ -18,6 +16,8 @@ export async function GET(request, { params }) {
       method: "GET",
       headers: {
         Accept: "application/json",
+        'User-Agent': 'Your App Name/Version',
+
       },
       // AbortSignal.timeout() is a newer API, you might need to use a polyfill for older environments
       signal: AbortSignal.timeout(10000), // 10 second timeout
