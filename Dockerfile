@@ -24,7 +24,8 @@ COPY . .
 RUN npm run build
 
 ### Production image runner ###
-FROM socialengine/nginx-spa:latest as nginxRunner
-COPY --from=builder /app/out ./app
-RUN ls ./app
-RUN chmod -R 777 /app
+FROM nginx:latest as nginxRunner
+COPY --from=builder /app/out /usr/share/nginx/html
+RUN chmod -R 755 /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
