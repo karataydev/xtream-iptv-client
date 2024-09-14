@@ -29,10 +29,6 @@ Built using:
 
 Got ideas for improvements? Feel free to open an issue or submit a pull request.
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
 ---
 
 Please use this tool responsibly and in accordance with applicable laws and regulations.
