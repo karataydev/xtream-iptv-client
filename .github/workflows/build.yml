@@ -32,6 +32,12 @@ jobs:
           cwd: "./"
           files: |
             captain-definition
+            package.json
+            package-lock.json
+            out
+            public
+            .next
+            node_modules
           outPath: deploy.tar
 
       # Uncomment and replace with your server
