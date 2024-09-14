@@ -3,7 +3,7 @@ name: build + publish
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 jobs:
