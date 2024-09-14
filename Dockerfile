@@ -26,4 +26,5 @@ RUN npm run build
 ### Production image runner ###
 FROM socialengine/nginx-spa:latest as nginxRunner
 COPY --from=builder /app/out ./app
+RUN ls ./app
 RUN chmod -R 777 /app
