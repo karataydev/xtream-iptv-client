@@ -134,7 +134,7 @@ export function SeriesDetails({ detail }) {
                       {getPlotContent(episode.info.plot)}
                     </p>
                   )}
-                  <div className="mt-2 space-x-2 flex items-center">
+                  <div className="mt-2 space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row items-start sm:items-center">
                     <Button
                       variant="outline"
                       size="sm"
@@ -155,7 +155,7 @@ export function SeriesDetails({ detail }) {
                       )}
                     </Button>
                     <Button
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto"
                       size="sm"
                       onClick={() =>
                         copyStreamUrl(episode.id, episode.container_extension)
