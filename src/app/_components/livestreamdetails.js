@@ -3,13 +3,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-    Clock,
-    Link
-} from "lucide-react";
+import { Clock, Link } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { xtreamClient } from "../global";
+import { copyToClipboard } from "@/lib/utils";
 
 function decodeBase64(str) {
   // Decode base64 (convert ascii to binary)
