@@ -10,7 +10,6 @@ import {
     Link,
     Star
 } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 import { xtreamClient } from "../global";
 
@@ -48,7 +47,7 @@ export function SeriesDetails({ detail }) {
     <>
       <div className="grid gap-6 md:grid-cols-[300px_1fr]">
         <div className="w-full max-w-[300px]">
-          <Image
+          <img
             alt="Movie Poster"
             className="aspect-[2/3] w-full rounded-md object-cover"
             height="450"
@@ -114,7 +113,7 @@ export function SeriesDetails({ detail }) {
               <div className="flex">
                 <div className="flex-shrink-0 mr-4">
               {episode.info.movie_image && (
-                <Image
+                <img
                   src={episode.info.movie_image}
                   alt={`Episode ${episode.episode_num}`}
                   width={120}

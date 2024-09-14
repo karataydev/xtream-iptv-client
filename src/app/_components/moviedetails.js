@@ -7,7 +7,6 @@ import {
     Link,
     Star
 } from "lucide-react";
-import Image from "next/image";
 import { xtreamClient } from "../global";
 
 export function MovieDetails({ detail }) {
@@ -17,7 +16,7 @@ export function MovieDetails({ detail }) {
     <>
       <div className="grid gap-6 md:grid-cols-[300px_1fr]">
         <div className="w-full max-w-[300px]">
-          <Image
+          <img
             alt="Movie Poster"
             className="aspect-[2/3] w-full rounded-md object-cover"
             height="450"

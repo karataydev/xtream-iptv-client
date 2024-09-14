@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Clock, Link } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { xtreamClient } from "../global";
 import { copyToClipboard } from "@/lib/utils";
@@ -59,7 +58,7 @@ export function LiveStreamDetails({ detail }) {
     <>
       <div className="grid gap-6 md:grid-cols-[300px_1fr]">
         <div className="w-full max-w-[300px]">
-          <Image
+          <img
             alt="Channel Logo"
             className="aspect-square w-full rounded-md object-cover"
             height="400"
