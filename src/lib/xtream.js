@@ -172,6 +172,7 @@ export class Xtream {
   }
 
   getStreamUrl(streamId, ext, mainCategory) {
+    console.log(streamId);
     switch (mainCategory) {
       case Categories.Movies:
         return this.getVODStreamUrl(streamId, ext);

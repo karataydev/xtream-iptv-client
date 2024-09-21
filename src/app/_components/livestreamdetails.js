@@ -7,6 +7,7 @@ import { Clock, Link } from "lucide-react";
 import { useEffect, useState } from "react";
 import { xtreamClient } from "../global";
 import { copyToClipboard } from "@/lib/utils";
+import { Categories } from "@/lib/xtream";
 
 function decodeBase64(str) {
   // Decode base64 (convert ascii to binary)
@@ -56,14 +57,14 @@ export function LiveStreamDetails({ detail }) {
 
   return (
     <>
-      <div className="grid gap-6 md:grid-cols-[300px_1fr]">
+      <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
         <div className="w-full max-w-[300px]">
           <img
             alt="Channel Logo"
             className="aspect-square w-full rounded-md object-cover"
-            height="400"
+            height="300"
             src={detail.icon}
-            width="400"
+            width="300"
           />
         </div>
         <div className="space-y-4">
@@ -72,9 +73,9 @@ export function LiveStreamDetails({ detail }) {
             className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white"
             onClick={() => {
               const streamUrl = xtreamClient.getStreamUrl(
-                detail.stream_id,
-                detail.container_extension,
-                "live",
+                detail.id,
+                "ts",
+                Categories.LiveStreams,
               );
               copyToClipboard(streamUrl);
             }}
